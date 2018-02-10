@@ -1,5 +1,6 @@
 import java.util.Scanner;
 
+
 public class HomeworkExercise2 {
     public static void main(String[] args) {
         Scanner keyboardScanner = new Scanner(System.in);
@@ -16,15 +17,28 @@ public class HomeworkExercise2 {
         int xK = 2;
         int yK = 2;
 
-        int xW = 2;
-        int yW = 1;
+
+        int [][] walls =
+                {
+                        {1, 1},
+                        {2, 1},
+                        {3, 1}
+                };
+
+        int xM = 4;
+        int yM = 2;
+
 
         Boolean gotKey = false;
+        Boolean monKilled = false;
 
         int turn = 0;
 
         while (true) {
+
             // view
+            int wallNum = 0;
+            int monsterNum = 0;
             for (int y = 0; y < m ; y++) {
                 for (int x = 0; x < n; x++) {
                     if (x == xP && y == yP ) {
@@ -36,8 +50,14 @@ public class HomeworkExercise2 {
                     else if (x == xK && y == yK && !gotKey){
                         System.out.print("K ");
                     }
-                    else if (x == xW && y == yW) {
+                    else if (x == xM && y == yM && !monKilled) {
+                        System.out.print("M ");
+                    }
+                    else if (x == walls[wallNum][0] && y == walls[wallNum][1]) {
                         System.out.print("W ");
+                        if (wallNum < walls.length - 1) {
+                            wallNum++;
+                        }
                     }
                     else {
                         System.out.print("_ ");
@@ -75,11 +95,43 @@ public class HomeworkExercise2 {
             if (xP < 0) xP = 0;
             if (xP >= n) xP = n-1;
 
-            // for wall
-            if (move.equals("W") && xP == xW && yP == yW) yP++;
-            if (move.equals("S") && xP == xW && yP == yW) yP--;
-            if (move.equals("A") && xP == xW && yP == yW) xP++;
-            if (move.equals("D") && xP == xW && yP == yW) xP--;
+            // for wallNum
+
+            for (int z = 0; z < walls.length; z++) {
+                if (move.equals("W") && xP == walls[z][0] && yP == walls[z][1]) yP++;
+                if (move.equals("S") && xP == walls[z][0] && yP == walls[z][1]) yP--;
+                if (move.equals("A") && xP == walls[z][0] && yP == walls[z][1]) xP++;
+                if (move.equals("D") && xP == walls[z][0] && yP == walls[z][1]) xP--;
+            }
+
+            // for Monsters
+
+            if (xP == xM && yP == yM && !monKilled) {
+                int choice;
+                System.out.println("Say hi to the little monster!");
+                System.out.println("You can:");
+                System.out.println("1. Attack ittttttt!");
+                System.out.println("2. Or runaway like a coward!");
+                do
+                {
+                   choice = keyboardScanner.nextInt();
+                } while (choice != 1 && choice != 2);
+
+                if (choice == 1) {
+                    monKilled = true;
+                    System.out.println("How dare you kill this cute monster!! God bless!!");
+                }
+                else if (choice == 2) {
+                    System.out.println("You coward!!!!");
+                    if (move.equals("W") && xP == xM && yP == yM) yP++;
+                    if (move.equals("S") && xP == xM && yP == yM) yP--;
+                    if (move.equals("A") && xP == xM && yP == yM) xP++;
+                    if (move.equals("D") && xP == xM && yP == yM) xP--;
+                }
+
+
+            }
+
 
 
 
