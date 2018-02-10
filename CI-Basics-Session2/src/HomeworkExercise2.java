@@ -32,13 +32,12 @@ public class HomeworkExercise2 {
         Boolean gotKey = false;
         Boolean monKilled = false;
 
-        int turn = 0;
+        int turns = 0;
 
         while (true) {
 
             // view
             int wallNum = 0;
-            int monsterNum = 0;
             for (int y = 0; y < m ; y++) {
                 for (int x = 0; x < n; x++) {
                     if (x == xP && y == yP ) {
@@ -71,16 +70,16 @@ public class HomeworkExercise2 {
 
             if (move.equals("W")) {
                 yP--;
-                turn++;
+                turns++;
             } else if (move.equals("S")) {
                 yP++;
-                turn++;
+                turns++;
             } else if (move.equals("A")) {
                 xP--;
-                turn++;
+                turns++;
             } else if (move.equals("D")) {
                 xP++;
-                turn++;
+                turns++;
             } else {
                 System.out.println("Wrong Command!!");
             }
@@ -127,6 +126,7 @@ public class HomeworkExercise2 {
                     if (move.equals("S") && xP == xM && yP == yM) yP--;
                     if (move.equals("A") && xP == xM && yP == yM) xP++;
                     if (move.equals("D") && xP == xM && yP == yM) xP--;
+                    turns--;
                 }
 
 
@@ -143,6 +143,7 @@ public class HomeworkExercise2 {
             if ( xP == xE && yP == yE ){
                 if (gotKey) {
                     System.out.println("You won!!");
+                    System.out.println(String.format("Number of tunrs you did: %d", turns));
                     break;
                 } else {
                     System.out.println("You forgot the key dude");
@@ -151,6 +152,7 @@ public class HomeworkExercise2 {
             }
 
         }
+
 
 
     }
