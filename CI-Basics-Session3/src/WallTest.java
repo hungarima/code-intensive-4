@@ -26,8 +26,8 @@ public static void main(String[] args) {
     walls.add(newWall);
         walls.add(new Wall(2, 3));
 
-    Wall temp = walls.get(0);
-    if (temp.match(2, 2)) {
+    Wall temp = walls.get(1);
+    if (temp.match( 2, 3)) {
         System.out.println("Hura");
     }
 

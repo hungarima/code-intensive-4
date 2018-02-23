@@ -3,12 +3,15 @@ import java.util.Arrays;
 
 public class ArrayExample {
     public static void main(String[] args) {
+
+        // Array
         String[] badHabits = new String[]{
                 "Learning outsideasdfasfsadfsadf",
                 "Watching neighbor'asdfsafsadfdsfsdsafdsfasdfsads roof",
                 "Watching movie in lasddfecture"
         };
 
+        //List
         ArrayList<String> badHabitList = new ArrayList<>();
         badHabitList.add("Mua cung doan voi co giao");
         badHabitList.add("Hoc ngoai gioi");
