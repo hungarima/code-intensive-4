@@ -32,7 +32,9 @@ public class HomeworkExercise2 {
         Boolean gotKey = false;
         Boolean monKilled = false;
 
-        int turns = 0;
+        int turnP = 0;
+        int turnM = 0;
+
 
         while (true) {
 
@@ -70,16 +72,16 @@ public class HomeworkExercise2 {
 
             if (move.equals("W")) {
                 yP--;
-                turns++;
+                turnP++;
             } else if (move.equals("S")) {
                 yP++;
-                turns++;
+                turnP++;
             } else if (move.equals("A")) {
                 xP--;
-                turns++;
+                turnP++;
             } else if (move.equals("D")) {
                 xP++;
-                turns++;
+                turnP++;
             } else {
                 System.out.println("Wrong Command!!");
             }
@@ -105,6 +107,7 @@ public class HomeworkExercise2 {
 
             // for Monsters
 
+
             if (xP == xM && yP == yM && !monKilled) {
                 int choice;
                 System.out.println("Say hi to the little monster!");
@@ -122,17 +125,22 @@ public class HomeworkExercise2 {
                 }
                 else if (choice == 2) {
                     System.out.println("You coward!!!!");
-                    if (move.equals("W") && xP == xM && yP == yM) yP++;
-                    if (move.equals("S") && xP == xM && yP == yM) yP--;
-                    if (move.equals("A") && xP == xM && yP == yM) xP++;
-                    if (move.equals("D") && xP == xM && yP == yM) xP--;
-                    turns--;
+                    if (turnM < 2) {
+                        if (move.equals("W") && xP == xM && yP == yM) yP++;
+                        if (move.equals("S") && xP == xM && yP == yM) yP--;
+                        if (move.equals("A") && xP == xM && yP == yM) xP++;
+                        if (move.equals("D") && xP == xM && yP == yM) xP--;
+                        turnM++;
+                    } else {
+                        System.out.println("You death!!");
+                        break;
+                    }
+
+                    turnP--;
                 }
 
 
             }
-
-
 
 
             if (xP == xK && yP == yK) {
@@ -143,7 +151,7 @@ public class HomeworkExercise2 {
             if ( xP == xE && yP == yE ){
                 if (gotKey) {
                     System.out.println("You won!!");
-                    System.out.println(String.format("Number of tunrs you did: %d", turns));
+                    System.out.println(String.format("Number of turnP you did: %d", turnP));
                     break;
                 } else {
                     System.out.println("You forgot the key dude");
