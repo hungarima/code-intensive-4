@@ -22,13 +22,15 @@ public class DungeonGame {
 
         Map map = new Map (6,5 );
 
-        Player player1 = new Player(1, 0);
+        Player player1 = new Player(1, 0, 2, 10);
 
         Exit exit = new Exit(3, 3);
 
         Key key = new Key(0, 3, false);
 
-        Monster monster = new Monster(2, 3, false);
+        Monster monster = new Monster(2, 3, false, 1, 4);
+
+        EnergyDrink redBull = new EnergyDrink(5, 2);
 
         ArrayList<Wall> walls = new ArrayList<>();
 
@@ -63,6 +65,9 @@ public class DungeonGame {
                     else if (monster.match(x, y) && !monster.killed) {
                         System.out.print("M ");
                     }
+                    else if (redBull.match(x, y) && !redBull.hasRB) {
+                        System.out.print("R ");
+                    }
                     else if (exit.match(x, y)) {
                         System.out.print("E ");
                     }
@@ -73,7 +78,9 @@ public class DungeonGame {
                 System.out.println();
             }
 
-            System.out.print("Your move? ");
+            System.out.println(String.format("Your ATK = %s, HP = %s", player1.atk, player1.hp));
+
+            System.out.println("Your move? ");
             String command = keyboardScanner.nextLine();
 
             vx = 0;
@@ -120,11 +127,22 @@ public class DungeonGame {
 //            }
             key.matchKey(player1.x, player1.y);
 
+            if (player1.x == redBull.x && player1.y == redBull.y) {
+                System.out.println("You got 1 Red Bull");
+                System.out.println("Double your Attack Damage!");
+                player1.atk *= 2;
+                redBull.hasRB = true;
+            }
+
+
+
 
             // Monster
-            if (player1.x == monster.x && player1.y == monster.y && !monster.killed) {
+            if (player1.x == monster.x && player1.y == monster.y && !monster.killed && monster.hp != 0) {
+
                 int choice;
                 System.out.println("Say hi to the monster!");
+                System.out.println(String.format("Monster: ATK = %s, HP = %s", monster.atk, monster.hp));
                 System.out.println("You can:");
                 System.out.println("1. Attack ittttttt!");
                 System.out.println("2. Or runaway like a coward!");
@@ -134,24 +152,37 @@ public class DungeonGame {
                 } while (choice != 1 && choice != 2);
 
                 if (choice == 1) {
-                    monster.killed = true;
-                    System.out.println("How dare you kill this cute monster!");
+                    monster.hp -= player1.atk;
+                    player1.hp -= monster.atk;
+                    if (monster.hp == 0) {
+                        System.out.println("You killed the monster!");
+                        monster.killed= true;
+                    }
+
+
                 }
                 else if (choice == 2) {
+
                     System.out.println("You coward!!!!");
+                    player1.hp -= monster.atk;
                     if (vy == -1) player1.y -= vy;;
                     if (vy == 1) player1.y -= vy;;
                     if (vx == -1) player1.x -= vx;
                     if (vx == 1) player1.x -= vx;
-                    }
+
+                }
 
             }
+
+
+
+            
 
             if (player1.x == exit.x && player1.y == exit.y) {
                 if (!key.hasKey) {
                     System.out.println("Get the key dude!");
                 } else {
-                    System.out.println("You won");
+                    System.out.println("You won!");
                     break;
                 }
             }
