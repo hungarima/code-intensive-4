@@ -1,0 +1,83 @@
+{
+  "description": {
+    "info": "level1",
+    "objects": [
+      "square",
+      "square_group",
+      "enemy_normal",
+      "enemy_hard",
+      "player"
+    ]
+  },
+  "player": {
+    "health": 5
+  },
+  "gift": {
+    "health": {
+      "count": 2,
+      "per_second": 25.0,
+      "speed_max": 12.0,
+      "speed_min": 5.0,
+      "add_health": 1
+    }
+  },
+  "square": {
+    "time_start": 0.0,
+    "count": 80,
+    "speed_min": 1.0,
+    "speed_max": 5.0
+  },
+  "square_groups": {
+    "objects": [
+      "square",
+      "circle"
+    ],
+    "square": {
+      "description": [
+        [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+      ],
+      "start_position_y": 10.0,
+      "size_width": 10,
+      "size_height": 4,
+      "distance": 10.0,
+      "speed_x": 3.0,
+      "speed_y": 25.0,
+      "time_start_first": 20.0,
+      "time_start_second": 25.0
+    },
+    "circle": {
+      "time_start_first": 30.0,
+      "time_start_second": 30.0,
+      "speed_x": 5.0,
+      "speed_y": 5.0,
+      "count": 15,
+      "distance_max": 60.0
+    }
+  },
+  "enemy_normal": {
+    "time_start": 20.0,
+    "count": 5,
+    "health_max": 5,
+    "speed_min": 1.0,
+    "speed_max": 2.0,
+    "second_per_count": 6.0,
+    "bullet": {
+      "speed": 4.0,
+      "shoot_per_second": 0.8
+    }
+  },
+  "enemy_hard": {
+    "wait_time": 9.0,
+    "count": 4,
+    "health_max": 5,
+    "speed_min": 1.0,
+    "speed_max": 4.0,
+    "bullet": {
+      "lerp_time": 40.0,
+      "shoot_per_second": 5.0
+    }
+  }
+}
