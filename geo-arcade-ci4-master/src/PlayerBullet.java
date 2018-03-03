@@ -1,14 +1,14 @@
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-public class Bullet {
+public class PlayerBullet {
     public BufferedImage image;
     public int x;
     public int y;
     public int dx;
     public int dy;
 
-    public Bullet(BufferedImage image, int x, int y, int dx, int dy) {
+    public PlayerBullet(BufferedImage image, int x, int y, int dx, int dy) {
         this.image = image;
         this.x = x;
         this.y = y;
