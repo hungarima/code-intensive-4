@@ -11,13 +11,28 @@ public class SquareSpawner extends GameObject {
     @Override
     public void run() {
         super.run();
-        if (this.count >= 30) {
+        if (this.count >= 40) {
             Square square = new Square();
-            square.x = random.nextInt(400);
-            square.dy = random.nextInt(4) + 2;
+            Square square1 = new Square();
+            Square square2 = new Square();
+
+            square.y = 50;
+            square1.y = 100;
+            square2.y = 150;
+            square1.dx = 3;
+            square2.dx = 3;
+            square.dx = 3;
+
+
             GameObject.add(square);
+            GameObject.add(square1);
+            GameObject.add(square2);
+
+//            square.dy = random.nextInt(4) + 2;
+
             this.count = 0;
         } else {
+
             this.count += 1;
         }
     }

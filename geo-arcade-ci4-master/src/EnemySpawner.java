@@ -1,22 +1,27 @@
 import java.util.Random;
 
-public class EnemySqawner extends GameObject {
+public class EnemySpawner extends GameObject {
     private int count = 0;
     private Random random;
+    private int changeX = 0;
+    private int changeY = 0;
 
-    public EnemySqawner() {
+    public EnemySpawner() {
         this.random = new Random();
     }
 
     @Override
     public void run() {
         super.run();
-        if (this.count >= 80) {
+        if (this.count >= 100) {
             Enemy enemy = new Enemy();
-            enemy.x = random.nextInt(400);
-            enemy.dy = random.nextInt(3) + 1;
+//            enemy.x = random.nextInt(400);
+//            enemy.dy = random.nextInt(3) + 1;
+            enemy.y = 200;
+            enemy.dx = 1;
             GameObject.add(enemy);
             this.count = 0;
+
         } else {
             this.count += 1;
         }
