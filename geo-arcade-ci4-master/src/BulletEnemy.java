@@ -1,10 +1,10 @@
-public class Square extends GameObject {
-
+public class BulletEnemy extends GameObject {
     public int dx;
     public int dy;
 
-    public Square() {
-        this.image = Utils.loadImage("resources/square/enemy_square_small.png");
+    public BulletEnemy() {
+        this.image = Utils.loadImage("resources/square/enemy_square_bullet.png");
+
     }
 
     @Override
