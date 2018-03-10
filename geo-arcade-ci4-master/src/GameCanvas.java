@@ -8,8 +8,6 @@ public class GameCanvas extends JPanel {
     BufferedImage backBuffered;
     Graphics graphics;
 
-    int countBullet = 0;
-
     public GameCanvas() {
         this.setup();
         this.setupBackBuffered();
@@ -17,6 +15,12 @@ public class GameCanvas extends JPanel {
         this.setupPlayer();
         GameObject.add(new SquareSpawner());
         GameObject.add(new EnemySpawner());
+        MatrixSquare matrixSquare = new MatrixSquare();
+        matrixSquare.x = 20;
+        matrixSquare.y = 20;
+        matrixSquare.dx = 3;
+        matrixSquare.create();
+        GameObject.add(matrixSquare);
     }
 
     private void setup() {
