@@ -1,3 +1,5 @@
+
+
 public class Background extends GameObject {
 
     public Background() {
