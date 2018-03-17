@@ -62,7 +62,7 @@ public class Vector2D {
     }
 
     public Vector2D subtract(Vector2D vector2D) {
-        return this.add(vector2D.x, vector2D.y);
+        return this.subtract(vector2D.x, vector2D.y);
     }
 
     public Vector2D multiply(float number) {

@@ -12,7 +12,7 @@ public class HitSquare {
 
     public void run(Bullet bullet) {
         BoxCollider boxCollider = bullet.boxCollider;
-        Square square = GameObjectManager.instance.checkCollision(boxCollider);
+        Square square = GameObjectManager.instance.checkCollisionSquare(boxCollider);
         if (square != null) {
             square.isAlive = false;
             bullet.getHit();

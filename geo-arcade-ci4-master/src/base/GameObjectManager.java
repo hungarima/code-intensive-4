@@ -1,7 +1,11 @@
 package base;
 
+import game.enemy.Enemy;
+import game.enemy.bullet.BulletEnemy;
 import game.player.Player;
+import game.player.bullet.Bullet;
 import game.square.Square;
+import game.square.bullet.BulletSquare;
 import physic.BoxCollider;
 
 import java.awt.*;
@@ -42,14 +46,40 @@ public class GameObjectManager {
                 .orElse(null); // neu ko lay dc tra null
     }
 
-    public Square checkCollision(BoxCollider other) {
+    public Square checkCollisionSquare(BoxCollider other) {
         return (Square) this.vector
                 .stream()
                 .filter(gameObject -> gameObject.isAlive) //lay object con song
                 .filter(gameObject -> gameObject instanceof Square) //Lay con Square
                 .filter(gameObject -> {
-                    BoxCollider boxCollider = ((Square) gameObject).boxCollider; //Lay BoxCollider
+                    BoxCollider boxCollider = ((Square) gameObject).boxCollider; //Get BoxCollider from Square
                     return boxCollider.checkCollider(other); // lay square dang co box chong len nhau
+                })
+                .findFirst()
+                .orElse(null);
+    }
+
+    public Enemy checkCollisionEnemy(BoxCollider other1) {
+        return (Enemy) this.vector
+                .stream()
+                .filter(gameObject -> gameObject.isAlive) //lay object con song
+                .filter(gameObject -> gameObject instanceof Enemy) //Lay con Square
+                .filter(gameObject -> {
+                    BoxCollider boxCollider = ((Enemy) gameObject).boxCollider; //Get BoxCollider from Square
+                    return boxCollider.checkCollider(other1); // lay square dang co box chong len nhau
+                })
+                .findFirst()
+                .orElse(null);
+    }
+
+    public BulletEnemy checkCollisionBullet(BoxCollider other2) {
+        return (BulletEnemy) this.vector
+                .stream()
+                .filter(gameObject -> gameObject.isAlive) //lay object con song
+                .filter(gameObject -> gameObject instanceof BulletEnemy) //Lay con Square
+                .filter(gameObject -> {
+                    BoxCollider boxCollider = ((BulletEnemy) gameObject).boxCollider; //Get BoxCollider from Square
+                    return boxCollider.checkCollider(other2); // lay square dang co box chong len nhau
                 })
                 .findFirst()
                 .orElse(null);

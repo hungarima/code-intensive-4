@@ -13,7 +13,8 @@ public class EnemyShoot {
         if (this.frameCounter.run()) {
             BulletEnemy bulletEnemy = new BulletEnemy();
             bulletEnemy.position.set(enemy.position);
-            bulletEnemy.velocity.set(0, 4);
+            bulletEnemy.velocity.set(GameObjectManager.instance.getPlayer().position.subtract(bulletEnemy.position));
+            bulletEnemy.velocity.set(bulletEnemy.velocity.normalize().multiply(3));
             GameObjectManager.instance.add(bulletEnemy);
         }
     }

@@ -38,7 +38,7 @@ public class GameCanvas extends JPanel {
     private void setupMatrix() {
         MatrixSquare matrixSquare = new MatrixSquare();
         matrixSquare.position.set(20, 20);
-        matrixSquare.velocity.set(3, 0);
+        matrixSquare.velocity.set(2, 0);
         matrixSquare.create();
         GameObjectManager.instance.add(matrixSquare);
     }
@@ -46,6 +46,7 @@ public class GameCanvas extends JPanel {
     private void setCircleSquare() {
         CircleSquare circleSquare = new CircleSquare();
         circleSquare.position.set(100, 100);
+        circleSquare.velocity.set(2,0);
         circleSquare.create();
         GameObjectManager.instance.add(circleSquare);
     }

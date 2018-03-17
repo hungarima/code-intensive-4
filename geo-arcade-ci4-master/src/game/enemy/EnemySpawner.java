@@ -1,6 +1,7 @@
 package game.enemy;
 
 import base.GameObject;
+import base.GameObjectManager;
 
 import java.util.Random;
 
@@ -19,7 +20,7 @@ public class EnemySpawner extends GameObject {
             Enemy enemy = new Enemy();
             enemy.position.set(random.nextInt(400), 0);
             enemy.velocity.set(0, random.nextInt(3) + 1);
-            GameObject.add(enemy);
+            GameObjectManager.instance.add(enemy);
             this.count = 0;
         } else {
             this.count += 1;

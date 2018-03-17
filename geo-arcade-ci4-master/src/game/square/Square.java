@@ -19,7 +19,8 @@ public class Square extends GameObject {
     @Override
     public void run() {
         super.run();
-        this.position.addUp(this.velocity);
         this.boxCollider.position.set(this.position);
+        this.position.addUp(this.velocity);
+
     }
 }
